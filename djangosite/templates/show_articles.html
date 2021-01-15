@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  <main role="main" class="flex-shrink-0 ">
+    <div class="container">
+      <h2 class="mt-5">{{ article.title }}</h2>
+      <p class="blog-post-meta text-muted">{{ article.last_update }} by {{ article.user }}</p>
+      <hr>
+      <p class="lead text-dark">{{ article.content }}</p>
+    </div>
+  </main>
+
+  <footer class="footer mt-auto bg-wight">
+    <div class="container">
+      <span class="float-lg-right"><a href="/blog/">Back to home</a></span>
+    </div>
+  </footer>
+{% endblock %}
