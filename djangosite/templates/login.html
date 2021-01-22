@@ -61,7 +61,7 @@ body {
 }
 
     </style>
-   <form class="form-signin" method="post" action="/blog/login"> {% csrf_token %}
+   <form class="form-signin" method="post" action="/post/login"> {% csrf_token %}
       <!--<img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
@@ -69,7 +69,7 @@ body {
       <label for="inputPassword" class="sr-only">Password</label>
       <input name="password" type="password" id="inputPassword" class="form-control" placeholder="密碼" required>
       <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
-      <p class="mt-5 mb-3 text-muted"><a href="/blog/">回首頁</a> &copy; 2020-2021</p>
+      <p class="mt-5 mb-3 text-muted"><a href="/post/">回首頁</a> &copy; 2020-2021</p>
    </form>
 
 {% endblock %}

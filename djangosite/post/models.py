@@ -18,3 +18,31 @@ class Articles(models.Model):
         Tag,
         related_name='articles_related_tags'
     )
+
+
+def _get_articles():
+    return Articles.objects.all().order_by('-last_update')
+
+def _get_articles_by_id(id):
+    return Articles.objects.filter(id=id).first()
+
+def _create_articles(request):
+    a = Articles.objects.create(user=request.user, title=request.POST['title'], content=request.POST['content'])
+    query = dict(request.POST)
+    for i in query['tags']:
+        a.tags.add(Tag.objects.get(id=i))
+    return
+
+def _edit_articles_by_id(request,id):
+    Articles.objects.filter(id=id).update(title=request.POST['title'], content=request.POST['content'])
+    a = Articles.objects.filter(id=id).get()
+    a.tags.remove()
+    query = dict(request.POST)
+    for i in query['tags']:
+        a.tags.add(Tag.objects.get(id=i))
+    return
+
+def _del_articles_by_id(id):
+    Articles.objects.filter(id=id).delete()
+    return
+

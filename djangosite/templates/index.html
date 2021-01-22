@@ -12,10 +12,10 @@
               <h4 class="text-white"></h4>
               <ul class="list-unstyled">
                 {% if user.is_authenticated %}
-                  <li><a href="/blog/articles/create" class="text-white">新增留言</a></li>
-                  <li><a href="/blog/logout" class="text-white">登出</a></li>
+                  <li><a href="/post/articles/create" class="text-white">新增留言</a></li>
+                  <li><a href="/post/logout" class="text-white">登出</a></li>
                 {% else %}
-                  <li><a href="/blog/signin" class="text-white">登入</a></li>
+                  <li><a href="/post/signin" class="text-white">登入</a></li>
                 {% endif %}
               </ul>
             </div>
@@ -42,8 +42,8 @@
             <h1>Welcome !!</h1>
             <p class="lead text-muted"> Please Sign Our Guestbook</p>
             <p>
-              <a href="/blog/signup" class="btn btn-primary my-2">註冊</a>
-              <a href="/blog/signin" class="btn btn-secondary my-2">登入</a>
+              <a href="/post/signup" class="btn btn-primary my-2">註冊</a>
+              <a href="/post/signin" class="btn btn-secondary my-2">登入</a>
             </p>
           </div>
         </section>
@@ -52,6 +52,10 @@
           <div class="container">
             <h1>Hello , {{ user.username }} </h1>
             <p class="lead "> write something great with me </p>
+            <p>
+              <a href="/post/articles/create" class="btn btn-primary my-2">留言</a>
+              <a href="/post/logout" class="btn btn-secondary my-2">登出</a>
+            </p>
           </div>
         </section>
         {% endif %}
@@ -68,10 +72,10 @@
                     <p class="card-text">標題: {{ a.title }}</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="javascript:location.href='/blog/articles/{{ a.id }}'">觀看</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="javascript:location.href='/post/articles/{{ a.id }}'">觀看</button>
                         {% if a.user == user %}
-                          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="javascript:location.href='/blog/articles/edit/{{ a.id }}'">編輯</button>
-                          <form method="post" action="/blog/articles/delete/{{ a.id }}"> {% csrf_token %}
+                          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="javascript:location.href='/post/articles/edit/{{ a.id }}'">編輯</button>
+                          <form method="post" action="/post/articles/delete/{{ a.id }}"> {% csrf_token %}
                             <input class="btn btn-sm btn-outline-secondary" type="submit" value="刪除">
                           </form>
                           <!--
